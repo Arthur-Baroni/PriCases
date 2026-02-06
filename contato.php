@@ -1,0 +1,174 @@
+<?php
+session_start();
+$logado = isset($_SESSION['usuario_id']);
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | PriCases</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #FFFFFF;
+            color: #222;
+        }
+        body.page-enter {
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        body.page-enter.page-enter-active {
+            opacity: 1;
+        }
+        body.page-leave {
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        header {
+            background: #DEBEAE;
+            color: #C28161;
+            padding: 18px 40px;
+            box-shadow: 0 2px 8px #0001;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #C28161;
+        }
+        .logo img {
+            height: 48px;
+            display: block;
+            transform: scale(3.6);
+            transform-origin: left center;
+        }
+        nav {
+            display: flex;
+            gap: 18px;
+        }
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: #C28161;
+            box-shadow: 0 2px 6px #0003;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+        }
+        nav a:hover {
+            background: #C28161;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px #0004;
+        }
+        main {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 10px 0 10px;
+        }
+        .contato-box {
+            background: #EEE2DB;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0002;
+            padding: 32px 24px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .contato-box h2 {
+            margin-top: 0;
+            color: #C28161;
+        }
+        .contato-info {
+            margin: 18px 0 0 0;
+            font-size: 1.1rem;
+        }
+        .contato-info a {
+            color: #C28161;
+            text-decoration: none;
+        }
+        .contato-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: #C28161;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 18px 0 10px 0;
+            margin-top: 40px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 12px 16px;
+            }
+            .logo { font-size: 1.4rem; }
+            nav { flex-wrap: wrap; }
+            .contato-box { padding: 18px 5px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="inicial.php"><img src="imagens/Logo.png" alt="PriCases"></a></div>
+        <nav>
+            <a href="inicial.php">Home</a>
+            <a href="catalogo.php">Catálogo</a>
+            <?php if (!$logado): ?>
+                <a href="cadastro.php">Cadastro</a>
+            <?php endif; ?>
+        </nav>
+    </header>
+    <main>
+        <div class="contato-box">
+            <h2>Fale Conosco</h2>
+            <div class="contato-info">
+                <p>WhatsApp: <a href="https://wa.me/5599999999999" target="_blank">(99) 99999-9999</a></p>
+                <p>Instagram: <a href="https://instagram.com/pricases" target="_blank">@pricases</a></p>
+                <p>Email: <a href="mailto:contato@pricases.com">contato@pricases.com</a></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>PriCases &copy; 2026 | WhatsApp: (99) 99999-9999 | Instagram: @pricases</div>
+    </footer>
+    <script>
+        document.body.classList.add('page-enter');
+        requestAnimationFrame(function() {
+            document.body.classList.add('page-enter-active');
+        });
+
+        document.querySelectorAll('a[href$=".php"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (!href || href.startsWith('#')) return;
+                e.preventDefault();
+                document.body.classList.remove('page-enter', 'page-enter-active');
+                document.body.classList.add('page-leave');
+                setTimeout(function() {
+                    window.location.href = href;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

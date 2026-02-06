@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | PriCases</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #FFFFFF;
+            color: #222;
+        }
+        body.page-enter {
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        body.page-enter.page-enter-active {
+            opacity: 1;
+        }
+        body.page-leave {
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        header {
+            background: #DEBEAE;
+            color: #C28161;
+            padding: 18px 40px;
+            box-shadow: 0 2px 8px #0001;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #C28161;
+        }
+        .logo img {
+            height: 48px;
+            display: block;
+            transform: scale(3.6);
+            transform-origin: left center;
+        }
+        nav {
+            display: flex;
+            gap: 18px;
+        }
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: #C28161;
+            box-shadow: 0 2px 6px #0003;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+        }
+        nav a:hover {
+            background: #C28161;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px #0004;
+        }
+        .catalogo-container {
+            flex: 1 0 auto;
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            background: #EEE2DB;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0002;
+            min-height: 500px;
+        }
+        .opcoes-celular {
+            width: 220px;
+            border-right: 1px solid #DEBEAE;
+            padding: 32px 0 32px 0;
+            background: #DEBEAE;
+            border-radius: 12px 0 0 12px;
+        }
+        .opcoes-celular h2 {
+            text-align: center;
+            color: #C28161;
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+        .opcoes-celular ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .opcoes-celular li {
+            padding: 12px 24px;
+            cursor: pointer;
+            color: #444;
+            border-radius: 6px 0 0 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .opcoes-celular li:hover, .opcoes-celular li.selected {
+            background: #C28161;
+            color: #FFFFFF;
+        }
+        .modelos-titulo {
+            margin: 24px 24px 8px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #C28161;
+        }
+        #lista-modelos {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0 0;
+        }
+        #lista-modelos li {
+            padding: 6px 24px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        .produtos-celular {
+            flex: 1;
+            padding: 32px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            align-content: flex-start;
+            justify-content: flex-start;
+        }
+        .produto {
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 18px;
+            text-align: center;
+            width: 180px;
+            transition: transform 0.2s;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: produto-slide-in 0.80s ease-out forwards;
+        }
+        .produto img {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .produto h3 {
+            font-size: 1rem;
+            margin: 8px 0 4px 0;
+        }
+        .produto .preco {
+            color: #C28161;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        @keyframes produto-slide-in {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        footer {
+            background: #C28161;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 18px 0 10px 0;
+            margin-top: 40px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 12px 16px;
+            }
+            .logo { font-size: 1.4rem; }
+            nav { flex-wrap: wrap; }
+            .catalogo-container { flex-direction: column; }
+            .opcoes-celular { width: 100%; border-radius: 12px 12px 0 0; border-right: none; border-bottom: 1px solid #eee; }
+            .produtos-celular { padding: 24px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Redireciona automaticamente para a versão dinâmica em PHP
+        window.location.href = 'catalogo.php';
+    </script>
+    <header>
+        <div class="logo"><img src="imagens/Logo.png" alt="PriCases"></div>
+        <nav>
+            <a href="inicial.php">Home</a>
+            <a href="catalogo.php">Catálogo</a>
+            <a href="cadastro.php">Cadastro</a>
+        </nav>
+    </header>
+    <div class="catalogo-container">
+        <aside class="opcoes-celular">
+            <h2>Celulares</h2>
+            <ul id="lista-celulares">
+                <li class="selected" data-modelo="iphone">iPhone</li>
+                <li data-modelo="samsung">Samsung</li>
+                <li data-modelo="xiaomi">Xiaomi</li>
+                <li data-modelo="motorola">Motorola</li>
+                <li data-modelo="outros">Outros</li>
+            </ul>
+            <div class="modelos-titulo">Modelos disponíveis</div>
+            <ul id="lista-modelos"></ul>
+        </aside>
+        <section class="produtos-celular" id="produtos-celular">
+            <!-- Produtos serão exibidos aqui -->
+        </section>
+    </div>
+    <footer>
+        <div>PriCases &copy; 2026 | WhatsApp: (99) 99999-9999 | Instagram: @pricases</div>
+    </footer>
+    <script>
+        const modelosPorMarca = {
+            iphone: ['iPhone 15', 'iPhone 15 Pro', 'iPhone 15 Pro Max', 'iPhone 16', 'iPhone 16 Pro', 'iPhone 16 Pro Max'],
+            samsung: ['Samsung S20', 'Samsung S21', 'Samsung S21 FE'],
+            xiaomi: ['Xiaomi 13', 'Xiaomi 13 Pro'],
+            motorola: ['Motorola Edge 40', 'Motorola G54'],
+            outros: ['Outros modelos']
+        };
+        // Ajuste os nomes dos arquivos abaixo conforme as imagens reais na pasta "imagens"
+        const produtosPorModelo = {
+            iphone: [
+                { nome: 'Capinha Silicone Terra-Cota 15', modelo: 'iPhone 15', preco: 'R$ 39,90', img: 'imagens/terra-cota_ip15promax.jpeg' },
+                { nome: 'Capinha Silicone Terra-Cota 15 Pro', modelo: 'iPhone 15 Pro', preco: 'R$ 49,90', img: 'imagens/terra-cota_ip15promax.jpeg' },
+                { nome: 'Capinha Silicone Terra-Cota 15 Pro Max', modelo: 'iPhone 15 Pro Max', preco: 'R$ 49,90', img: 'imagens/terra-cota_ip15promax.jpeg' },
+                { nome: 'Capinha Silicone Terra-Cota 16', modelo: 'iPhone 16', preco: 'R$ 49,90', img: 'imagens/terra-cota_ip15promax.jpeg' },
+                { nome: 'Capinha Silicone Terra-Cota 16 Pro', modelo: 'iPhone 16 Pro', preco: 'R$ 49,90', img: 'imagens/terra-cota_ip15promax.jpeg' },
+                { nome: 'Capinha Silicone Terra-Cota 16 Pro Max', modelo: 'iPhone 16 Pro Max', preco: 'R$ 49,90', img: 'imagens/terra-cota_ip15promax.jpeg' },
+                { nome: 'Capinha Silicone Tons de Cinza 15', modelo: 'iPhone 15', preco: 'R$ 49,90', img: 'imagens/tons_de_cinza.jpg' },
+                { nome: 'Capinha Silicone Tons de Cinza 15 Pro', modelo: 'iPhone 15 Pro', preco: 'R$ 49,90', img: 'imagens/tons_de_cinza.jpg' },
+                { nome: 'Capinha Silicone Tons de Cinza 15 Pro Max', modelo: 'iPhone 15 Pro Max', preco: 'R$ 49,90', img: 'imagens/tons_de_cinza.jpg', },
+                { nome: 'Capinha Silicone Tons de Cinza 16', modelo: 'iPhone 16', preco: 'R$ 49,90', img: 'imagens/tons_de_cinza.jpg' },
+                { nome: 'Capinha Silicone Tons de Cinza 16 Pro', modelo: 'iPhone 16 Pro', preco: 'R$ 49,90', img: 'imagens/tons_de_cinza.jpg' },
+                { nome: 'Capinha Silicone Tons de Cinza 16 Pro Max', modelo: 'iPhone 16 Pro Max', preco: 'R$ 49,90', img: 'imagens/tons_de_cinza.jpg' } 
+            ],
+            samsung: [
+                { nome: 'Capinha Transparente Samsung S20', modelo: 'Samsung S20', preco: 'R$ 29,90', img: 'imagens/s20-transparente.png' },
+                { nome: 'Capinha Colorida Samsung S21', modelo: 'Samsung S21', preco: 'R$ 34,90', img: 'imagens/s21-colorida.png' },
+                { nome: 'Capinha Slim Samsung S21 FE', modelo: 'Samsung S21 FE', preco: 'R$ 32,90', img: 'imagens/s21fe-slim.png' }
+            ],
+            xiaomi: [
+                { nome: 'Capinha Minimalista Xiaomi 13', modelo: 'Xiaomi 13', preco: 'R$ 32,90', img: 'imagens/xiaomi13-minimalista.png' },
+                { nome: 'Capinha Anti-impacto Xiaomi 13 Pro', modelo: 'Xiaomi 13 Pro', preco: 'R$ 38,90', img: 'imagens/xiaomi13pro-antiimpacto.png' }
+            ],
+            motorola: [
+                { nome: 'Capinha Resistente Motorola Edge 40', modelo: 'Motorola Edge 40', preco: 'R$ 36,90', img: 'imagens/edge40-resistente.png' },
+                { nome: 'Capinha Silicone Motorola G54', modelo: 'Motorola G54', preco: 'R$ 33,90', img: 'imagens/g54-silicone.png' }
+            ],
+            outros: [
+                { nome: 'Capinha Universal', modelo: 'Outros modelos', preco: 'R$ 25,90', img: 'imagens/universal.png' }
+            ]
+        };
+        let marcaAtual = 'iphone';
+        function renderModelos(marca) {
+            marcaAtual = marca;
+            const lista = document.getElementById('lista-modelos');
+            lista.innerHTML = '';
+            const modelos = modelosPorMarca[marca] || [];
+            modelos.forEach(modelo => {
+                const li = document.createElement('li');
+                li.textContent = modelo;
+                li.setAttribute('data-modelo', modelo);
+                li.addEventListener('click', function() {
+                    document.querySelectorAll('#lista-modelos li').forEach(el => el.classList.remove('selected'));
+                    this.classList.add('selected');
+                    renderProdutos(marcaAtual, this.getAttribute('data-modelo'));
+                });
+                lista.appendChild(li);
+            });
+        }
+        function renderProdutos(marca, modelo = null) {
+            const area = document.getElementById('produtos-celular');
+            area.innerHTML = '';
+            const lista = produtosPorModelo[marca] || [];
+            const filtrados = modelo ? lista.filter(prod => prod.modelo === modelo) : lista;
+            if (filtrados.length) {
+                filtrados.forEach(prod => {
+                    area.innerHTML += `<div class="produto">
+                        <img src="${prod.img}" alt="${prod.nome}">
+                        <h3>${prod.nome}</h3>
+                        <div class="preco">${prod.preco}</div>
+                    </div>`;
+                });
+            } else {
+                area.innerHTML = '<p>Nenhum produto disponível para este modelo.</p>';
+            }
+        }
+        document.querySelectorAll('#lista-celulares li').forEach(li => {
+            li.addEventListener('click', function() {
+                document.querySelectorAll('#lista-celulares li').forEach(el => el.classList.remove('selected'));
+                this.classList.add('selected');
+                const marca = this.getAttribute('data-modelo');
+                renderProdutos(marca); // todos os modelos dessa marca
+                renderModelos(marca);  // atualiza lista de modelos clicáveis
+            });
+        });
+        // Inicializa com a primeira marca e seus modelos
+        renderProdutos('iphone');
+        renderModelos('iphone');
+        document.body.classList.add('page-enter');
+        requestAnimationFrame(function() {
+            document.body.classList.add('page-enter-active');
+        });
+
+        document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (!href || href.startsWith('#')) return;
+                e.preventDefault();
+                document.body.classList.remove('page-enter', 'page-enter-active');
+                document.body.classList.add('page-leave');
+                setTimeout(function() {
+                    window.location.href = href;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

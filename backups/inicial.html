@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriCases - Capinhas e Acessórios</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #FFFFFF;
+            color: #222;
+        }
+        body.page-enter {
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        body.page-enter.page-enter-active {
+            opacity: 1;
+        }
+        body.page-leave {
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        header {
+            background: #DEBEAE;
+            color: #C28161;
+            padding: 18px 40px;
+            box-shadow: 0 2px 8px #0001;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #C28161;
+        }
+        .logo img {
+            height: 48px;
+            display: block;
+            transform: scale(3.6);
+            transform-origin: left center;
+        }
+        nav {
+            display: flex;
+            gap: 18px;
+        }
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: #C28161;
+            box-shadow: 0 2px 6px #0003;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+        }
+        nav a:hover {
+            background: #C28161;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px #0004;
+        }
+        main {
+            flex: 1 0 auto;
+            padding-bottom: 40px;
+        }
+        .hero {
+            max-width: 1200px;
+            margin: 30px auto 40px auto;
+            padding: 0 5vw 30px 5vw;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-text h2 {
+            font-size: 2rem;
+            margin: 0 0 12px 0;
+            color: #C28161;
+        }
+        .hero-text p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+            margin: 0 0 20px 0;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn-cta {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .btn-cta.primary {
+            background: #C28161;
+            color: #FFFFFF;
+        }
+        .btn-cta.primary:hover {
+            background: #C28161;
+            box-shadow: 0 3px 10px #0003;
+        }
+        .btn-cta.secondary {
+            background: #FFFFFF;
+            color: #C28161;
+            border: 1px solid #C28161;
+        }
+        .btn-cta.secondary:hover {
+            background: #EEE2DB;
+        }
+        .hero-image {
+            flex: 1;
+            min-height: 220px;
+            border-radius: 18px;
+            background: #EEE2DB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #C28161;
+            font-weight: 600;
+            box-shadow: 0 6px 18px #0003;
+        }
+        .sobre-loja {
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+            padding: 0 5vw;
+            text-align: left;
+        }
+        .sobre-loja h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            color: #C28161;
+        }
+        .sobre-loja p {
+            margin: 0 0 8px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+            padding: 0 5vw 40px 5vw;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .produto {
+            background: #EEE2DB;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0002;
+            padding: 18px;
+            text-align: center;
+            animation: produto-giro-movimento 8s ease-in-out infinite;
+        }
+        .produto:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+        .produto:nth-child(3) {
+            animation-delay: 3s;
+        }
+        @keyframes produto-giro-movimento {
+            0% {
+                transform: translateX(-15px);
+                opacity: 0;
+            }
+            20% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            80% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(15px);
+                opacity: 0;
+            }
+        }
+        .produto img {
+            width: 100%;
+            max-width: 160px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .produto h2 {
+            font-size: 1.1rem;
+            margin: 8px 0 4px 0;
+        }
+        .produto p {
+            color: #666;
+            font-size: 0.97rem;
+            margin: 0 0 8px 0;
+        }
+        .produto .preco {
+            color: #C28161;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        footer {
+            background: #C28161;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 18px 0 10px 0;
+            margin-top: 40px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 12px 16px;
+            }
+            .logo { font-size: 1.4rem; }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                order: 1;
+            }
+            .hero-image {
+                order: 0;
+                width: 100%;
+            }
+            .hero-buttons { justify-content: center; }
+            .produtos { padding: 0 2vw 30px 2vw; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="imagens/Logo.png" alt="PriCases"></div>
+        <nav>
+            <a href="cadastro.php">Cadastro</a>
+            <a href="login.php">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero" id="topo">
+            <div class="hero-text">
+                <h2>Capinhas com a sua cara</h2>
+                <p>Na PriCases você encontra capinhas modernas, resistentes e cheias de personalidade para deixar o seu celular protegido e estiloso. Trabalhamos com diversos modelos de aparelhos e atualizamos nosso catálogo com novidades toda semana.</p>
+                <div class="hero-buttons">
+                    <a href="catalogo.html" class="btn-cta primary">Ver catálogo completo</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                    
+                <img src="imagens/Logo.png" alt="PriCases">
+            </div>
+        </section>
+        <section class="sobre-loja" id="sobre">
+            <h3>Sobre a PriCases</h3>
+            <p>Somos uma loja especializada em capinhas e acessórios para celular, com foco em qualidade, estilo e bom atendimento. Cada peça é escolhida com carinho para combinar proteção e beleza no dia a dia.</p>
+            <p>Atendemos diversos modelos de celulares e estamos sempre em busca das últimas tendências para que você encontre aqui a capinha perfeita para o seu aparelho.</p>
+        </section>
+        <section class="produtos" aria-label="Destaques da PriCases">
+            <div class="produto">
+                <img src="imagens/tons_de_bordo.jpg" alt="Capinha destaque 1">
+                <h2>Tons de Bordô</h2>
+                <p>Modelos em diferentes tons de bordô para um visual sofisticado e elegante.</p>
+                <div class="preco">Sob consulta</div>
+            </div>
+            <div class="produto">
+                <img src="imagens/tons_de_cinza.jpg" alt="Capinha destaque 2">
+                <h2>Tons de Cinza</h2>
+                <p>Modelos em diferentes tons de cinza para um visual sóbrio e elegante.</p>
+                <div class="preco">A partir de R$ 29,90</div>
+            </div>
+            <div class="produto">
+                <img src="imagens/terra-cota_ip15promax.jpeg" alt="Capinha destaque 3">
+                <h2>Terra Cota</h2>
+                <p>Elegantes e discretas, perfeitas para quem gosta de tons terrosos.</p>
+                <div class="preco">A partir de R$ 34,90</div>
+            </div>
+             <div class="produto">
+                <img src="imagens/estelar.jpg" alt="Capinha destaque 4">
+                <h2>Estelar</h2>
+                <p>Designs inspirados no cosmos para um visual único e moderno.</p>
+                <div class="preco">A partir de R$ 34,90</div>
+            </div>
+        </section>
+    </main>
+    <footer id="contato">
+        <div>PriCases &copy; 2026 | WhatsApp: (99) 99999-9999 | Instagram: @pricases</div>
+    </footer>
+    <script>
+        document.body.classList.add('page-enter');
+        requestAnimationFrame(function() {
+            document.body.classList.add('page-enter-active');
+        });
+
+        document.querySelectorAll('a[href$=".html"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (!href || href.startsWith('#')) return;
+                e.preventDefault();
+                document.body.classList.remove('page-enter', 'page-enter-active');
+                document.body.classList.add('page-leave');
+                setTimeout(function() {
+                    window.location.href = href;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
